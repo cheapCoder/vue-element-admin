@@ -1,4 +1,4 @@
-# https://editorconfig.org
+# https://editorconfig.org    有助于维护跨多个编辑器和IDE从事同一项目的多个开发人员的一致编码风格
 root = true
 
 [*]
