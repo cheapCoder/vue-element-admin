@@ -1,8 +1,8 @@
 import Vue from 'vue'
 
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie' // https://github.com/js-cookie/js-cookie#basic-usage
 
-import 'normalize.css/normalize.css' // a modern alternative to CSS resets
+import 'normalize.css/normalize.css'
 
 import Element from 'element-ui'
 import './styles/element-variables.scss'
@@ -25,8 +25,7 @@ import * as filters from './filters' // global filters
  * you want to use MockJs for mock api
  * you can execute: mockXHR()
  *
- * Currently MockJs will be used in the production environment,
- * please remove it before going online ! ! !
+ * 生产环境会用MockJs，项目上线后请移除
  */
 if (process.env.NODE_ENV === 'production') {
   const { mockXHR } = require('../mock')
