@@ -1,0 +1,14 @@
+# https://editorconfig.org    有助于维护跨多个编辑器和IDE从事同一项目的多个开发人员的一致编码风格
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md]
+insert_final_newline = false
+trim_trailing_whitespace = false
