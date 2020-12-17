@@ -104,13 +104,6 @@
       "pre-commit": "lint-staged"
     }
   },
-<<<<<<< HEAD
   "repository": "git+https://github.com/PanJiaChen/vue-element-admin.git",
   "main": "index.js"
-=======
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PanJiaChen/vue-element-admin.git"
-  }
->>>>>>> 8765b86d588cb70b4d2074d5b3f357ab7ee52085
 }
