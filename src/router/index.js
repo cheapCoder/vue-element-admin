@@ -12,8 +12,8 @@ import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 import nestedRouter from './modules/nested'
 
-/**
- * Note: sub-menu only appear when route children.length >= 1
+/**TODO: 大部分不理解作用
+ * NOTE: sub-menu only appear when route children.length >= 1
  * Detail see: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
  *
  * hidden: true                   if set true, item will not show in the sidebar(default is false)
@@ -33,11 +33,7 @@ import nestedRouter from './modules/nested'
   }
  */
 
-/**
- * constantRoutes
- * a base page that does not have permission requirements
- * all roles can be accessed
- */
+//  不用权限验证的路由
 export const constantRoutes = [
   {
     path: '/redirect',
@@ -45,13 +41,13 @@ export const constantRoutes = [
     hidden: true,
     children: [
       {
-        path: '/redirect/:path(.*)',
+        path: '/redirect/:path(.*)',                                  // TODO: (.*)是什么意思
         component: () => import('@/views/redirect/index')
       }
     ]
   },
   {
-    path: '/login',
+    path: '/login',     // TODO: 自动登陆跳转没有到login页闪一下的问题，怎么实现的
     component: () => import('@/views/login/index'),
     hidden: true
   },
@@ -124,10 +120,7 @@ export const constantRoutes = [
   }
 ]
 
-/**
- * asyncRoutes
- * the routes that need to be dynamically loaded based on user roles
- */
+//  需要权限验证的路由
 export const asyncRoutes = [
   {
     path: '/permission',
@@ -389,7 +382,7 @@ export const asyncRoutes = [
 
 const createRouter = () => new Router({
   // mode: 'history', // require service support
-  scrollBehavior: () => ({ y: 0 }),
+  scrollBehavior: () => ({ y: 0 }),     //TODO: 不太理解其引发的行为及作用
   routes: constantRoutes
 })
 
@@ -398,7 +391,7 @@ const router = createRouter()
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 export function resetRouter() {
   const newRouter = createRouter()
-  router.matcher = newRouter.matcher // reset router
+  router.matcher = newRouter.matcher // 重置路由器 TODO: matcher是什么？
 }
 
 export default router
