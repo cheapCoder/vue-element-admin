@@ -8,10 +8,9 @@ import getPageTitle from '@/utils/get-page-title'
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
-const whiteList = ['/login', '/auth-redirect'] // no redirect whitelist
+const whiteList = ['/login', '/auth-redirect'] // 不重定向的白名单
 
-router.beforeEach(async(to, from, next) => {
-  // start progress bar
+router.beforeEach(async(to, from, next)=>{
   NProgress.start()
 
   // set page title
@@ -22,31 +21,28 @@ router.beforeEach(async(to, from, next) => {
 
   if (hasToken) {
     if (to.path === '/login') {
-      // if is logged in, redirect to the home page
-      next({ path: '/' })
-      NProgress.done() // hack: https://github.com/PanJiaChen/vue-element-admin/pull/2939
+      next({ path: '/' })   //  没登录就重定向到主页‘/’
+      NProgress.done() // HACK: https://github.com/PanJiaChen/vue-element-admin/pull/2939
     } else {
       // determine whether the user has obtained his permission roles through getInfo
       const hasRoles = store.getters.roles && store.getters.roles.length > 0
-      if (hasRoles) {
+      if (hasRoles) {   //有角色
         next()
-      } else {
+      } else {          //没有就尝试获取
         try {
-          // get user info
-          // note: roles must be a object array! such as: ['admin'] or ,['developer','editor']
-          const { roles } = await store.dispatch('user/getInfo')
+          // note: roles必须是数组， such as: ['admin'] or ,['developer','editor']
+          const { roles } = await store.dispatch('user/getInfo')  //获取用户信息
 
-          // generate accessible routes map based on roles
-          const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
+          const accessRoutes = await store.dispatch('permission/generateRoutes', roles)   //  基于roles动态生成路由map
 
-          // dynamically add accessible routes
-          router.addRoutes(accessRoutes)
+          router.addRoutes(accessRoutes)    // 动态添加数组
 
-          // hack method to ensure that addRoutes is complete
+          //NOTE:  router.addRoutes之后的next()可能会失效，因为可能next()的时候路由并没有完全add完成，可通过在next(option)中重新定向引发beforeEach再次运行
+          // 参考：https://juejin.cn/post/6844903478880370701#heading-8
+
           // set the replace: true, so the navigation will not leave a history record
-          next({ ...to, replace: true })
+          next({ ...to, replace: true });
         } catch (error) {
-          // remove token and go to login page to re-login
           await store.dispatch('user/resetToken')
           Message.error(error || 'Has Error')
           next(`/login?redirect=${to.path}`)
@@ -54,15 +50,11 @@ router.beforeEach(async(to, from, next) => {
         }
       }
     }
-  } else {
-    /* has no token*/
-
-    if (whiteList.indexOf(to.path) !== -1) {
-      // in the free login whitelist, go directly
+  } else {      //  没有token
+    if (whiteList.indexOf(to.path) !== -1) {  // 在白名单就不用进行login
       next()
     } else {
-      // other pages that do not have permission to access are redirected to the login page.
-      next(`/login?redirect=${to.path}`)
+      next(`/login?redirect=${to.path}`)       // 不在白名单就要进行login
       NProgress.done()
     }
   }

@@ -88,6 +88,10 @@ export const constantRoutes = [
         component: () => import('@/views/documentation/index'),
         name: 'Documentation',
         meta: { title: 'Documentation', icon: 'documentation', affix: true }
+      },
+      {
+        path: '*',
+        redirect: 'index'
       }
     ]
   },
@@ -391,7 +395,7 @@ const router = createRouter()
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 export function resetRouter() {
   const newRouter = createRouter()
-  router.matcher = newRouter.matcher // 重置路由器 TODO: matcher是什么？
+  router.matcher = newRouter.matcher // 重置路由器  NOTE: matcher用于替换现有的路由器对象，
 }
 
 export default router

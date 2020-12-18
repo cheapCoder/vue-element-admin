@@ -14,7 +14,7 @@ import enLang from 'element-ui/lib/locale/lang/en'// 如果使用中文语言包
 import '@/styles/index.scss' // global css
 
 import './icons' // icon
-import './permission' // permission control
+import './permission' // 权限控制
 import './utils/error-log' // error log
 
 import * as filters from './filters' // global filters
