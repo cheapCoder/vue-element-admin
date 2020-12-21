@@ -19,10 +19,10 @@ export default {
       return isExternal(this.to)
     },
     type() {
-      if (this.isExternal) {
+      if (this.isExternal) {    // NOTE: 如果路由的path是http链接就是 a标签
         return 'a'
       }
-      return 'router-link'
+      return 'router-link'      // 如果路由的path不是是http，email等链接就是 router-link标签
     }
   },
   methods: {

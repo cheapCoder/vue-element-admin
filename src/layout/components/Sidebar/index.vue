@@ -2,6 +2,7 @@
   <div :class="{'has-logo':showLogo}">
     <logo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
+      // 配置默认打开的标签导航  `:default-openeds="['/example','/nested']"`
       <el-menu
         :default-active="activeMenu"
         :collapse="isCollapse"
