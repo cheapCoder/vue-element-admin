@@ -50,7 +50,7 @@ export const constantRoutes = [
     hidden: true,
     children: [
       {
-        path: '/redirect/:path(.*)',                                  // TODO: (.*)是什么意思
+        path: '/redirect/:path(.*)',                       // TODO: (.*)： vue-router的内部实现https://segmentfault.com/a/1190000018051526
         component: () => import('@/views/redirect/index')
       }
     ]

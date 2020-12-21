@@ -49,12 +49,6 @@ export default {
       }
       return name.trim().toLocaleLowerCase() === 'Dashboard'.toLocaleLowerCase()
     },
-    pathCompile(path) {
-      // To solve this problem https://github.com/PanJiaChen/vue-element-admin/issues/561
-      const { params } = this.$route
-      var toPath = pathToRegexp.compile(path)
-      return toPath(params)
-    },
     handleLink(item) {
       const { redirect, path } = item
       if (redirect) {
@@ -62,7 +56,13 @@ export default {
         return
       }
       this.$router.push(this.pathCompile(path))
-    }
+    },
+     pathCompile(path) {
+      // To solve this problem https://github.com/PanJiaChen/vue-element-admin/issues/561
+      const { params } = this.$route
+      var toPath = pathToRegexp.compile(path)
+      return toPath(params)
+    },
   }
 }
 </script>
