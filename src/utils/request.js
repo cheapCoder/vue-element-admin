@@ -5,7 +5,7 @@ import { getToken } from '@/utils/auth'
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
-  // withCredentials: true, // 发送跨域请求时
+  // withCredentials: true, // 携带cookie，发送跨域请求
   timeout: 5000
 })
 
