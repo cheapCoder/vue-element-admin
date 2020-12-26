@@ -6,7 +6,7 @@
  * @param {string} path
  * @returns {Boolean}
  */
-export function isExternal(path) {
+export function isExternal(path) {  // 判断是否是外部链接
   return /^(https?:|mailto:|tel:)/.test(path)
 }
 

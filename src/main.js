@@ -13,7 +13,7 @@ import enLang from 'element-ui/lib/locale/lang/en'// 如果使用中文语言包
 
 import '@/styles/index.scss' // global css
 
-import './icons' // icon
+import './icons' // icon并全局引入svg-icon组件
 import './permission' // 权限控制
 import './utils/error-log' // error log
 
@@ -28,8 +28,7 @@ import * as filters from './filters' // global filters
  */
 if (process.env.NODE_ENV === 'production') {
   const { mockXHR } = require('../mock')
-
-  mockXHR()    // TODO:什么功能？
+  mockXHR()    // 执行就是使项目使用mock数据，不执行就使用后端真是数据；
 }
 
 Vue.use(Element, {

@@ -1,11 +1,11 @@
 const state = {
   visitedViews: [],
-  cachedViews: []
+  cachedViews: []   // NOTE:用于keep-alive标签include属性，但个人认为写到getter里，动态路由表变化时就会自动生成最新的cachedViews，不用再分发action了，更好
 }
 
 const mutations = {
   ADD_VISITED_VIEW: (state, view) => {
-    if (state.visitedViews.some(v => v.path === view.path)) return
+    if (state.visitedViews.some(v => v.path === view.path)) return  // 已经缓存过了就退出
     state.visitedViews.push(
       Object.assign({}, view, {
         title: view.meta.title || 'no-name'

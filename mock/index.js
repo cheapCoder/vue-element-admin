@@ -17,8 +17,7 @@ const mocks = [
 // please use it cautiously, it will redefine XMLHttpRequest,
 // which will cause many of your third-party libraries to be invalidated(like progress event).
 function mockXHR() {
-  // mock patch
-  // https://github.com/nuysoft/Mock/issues/300
+  // mock补丁 ：https://github.com/nuysoft/Mock/issues/300
   Mock.XHR.prototype.proxy_send = Mock.XHR.prototype.send
   Mock.XHR.prototype.send = function() {
     if (this.custom.xhr) {
@@ -31,7 +30,7 @@ function mockXHR() {
     this.proxy_send(...arguments)
   }
 
-  function XHR2ExpressReqWrap(respond) {
+  function XHR2ExpressReqWrap(respond) {    //TODO: 什么用
     return function(options) {
       let result = null
       if (respond instanceof Function) {
@@ -49,7 +48,7 @@ function mockXHR() {
     }
   }
 
-  for (const i of mocks) {
+  for (const i of mocks) {  // NOTE: 遍历模板mock数据
     Mock.mock(new RegExp(i.url), i.type || 'get', XHR2ExpressReqWrap(i.response))
   }
 }

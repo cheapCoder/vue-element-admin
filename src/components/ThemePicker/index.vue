@@ -8,7 +8,7 @@
 </template>
 
 <script>
-const version = require('element-ui/package.json').version // element-ui version from node_modules
+const version = require('element-ui/package.json').version // 获取element-ui的版本号
 const ORIGINAL_THEME = '#409EFF' // default color
 
 export default {
@@ -95,7 +95,7 @@ export default {
       return newStyle
     },
 
-    getCSSString(url, variable) {
+    getCSSString(url, variable) {   // TODO: 怎么修改主题色？ https://panjiachen.gitee.io/vue-element-admin-site/zh/guide/advanced/theme.html#%E5%A4%9A%E5%A5%97%E4%B8%BB%E9%A2%98%E6%8D%A2%E8%82%A4
       return new Promise(resolve => {
         const xhr = new XMLHttpRequest()
         xhr.onreadystatechange = () => {

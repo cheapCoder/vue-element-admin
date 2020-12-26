@@ -42,7 +42,7 @@ export default {
   },
   computed: {
     visitedViews() {
-      return this.$store.state.tagsView.visitedViews
+      return this.$store.state.tagsView.visitedViews    // 不用mapState是想要computed的缓存
     },
     routes() {
       return this.$store.state.permission.routes
