@@ -27,7 +27,7 @@ redirect: 'noRedirect'    //当设置 noRedirect 的时候该路由在面包屑�
 alwaysShow: true
 
 name: 'router-name' // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
-meta: {e
+meta: {
   roles: ['admin', 'editor'] // 设置该路由进入的权限，支持多个权限叠加
   title: 'title' // 设置该路由在侧边栏和面包屑中展示的名字
   icon: 'svg-name' // 设置该路由的图标，支持 svg-class，也支持 el-icon-x element-ui 的 icon
@@ -139,7 +139,7 @@ export const asyncRoutes = [
     path: '/permission',
     component: Layout,
     redirect: '/permission/page',
-    alwaysShow: true, // will always show the root menu
+    alwaysShow: false, // will always show the root menu
     name: 'Permission',
     meta: {
       title: 'Permission',

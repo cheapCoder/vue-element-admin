@@ -28,5 +28,5 @@ export default function handleClipboard(text, event) {
     clipboardError()
     clipboard.destroy()
   })
-  clipboard.onClick(event)
+  // clipboard.onClick(event) //TODO: 干嘛的？
 }
