@@ -1,3 +1,9 @@
+// 由于我们的 mock 是完全基于webpack-dev-serve来实现的，所以在你启动前端服务的同时，mock-server就会自动启动，
+// 而且这里还通过 chokidar 来观察 mock 文件夹内容的变化。
+// 在发生变化时会清除之前注册的mock-api接口，重新动态挂载新的接口，从而支持热更新
+
+// TODO:mock-server是什么
+
 const chokidar = require('chokidar')
 const bodyParser = require('body-parser')
 const chalk = require('chalk')

@@ -4,7 +4,7 @@ const install = function(Vue) {
   Vue.directive('permission', permission)
 }
 if (window.Vue) {
-  window['permission'] = permission     
+  window['permission'] = permission
   Vue.use(install); // eslint-disable-line
 }
 
