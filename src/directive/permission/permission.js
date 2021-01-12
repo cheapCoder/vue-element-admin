@@ -5,7 +5,7 @@ function checkPermission(el, binding) {
   const roles = store.getters && store.getters.roles
 
   if (value && value instanceof Array) {
-    if (value.length > 0) {
+    if (value.length > 0) {   // 如果是空数组就相当于没写`v-permission`,不用权限验证
       const permissionRoles = value
 
       const hasPermission = roles.some(role => {

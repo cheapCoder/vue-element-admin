@@ -2,7 +2,7 @@
   <section class="app-main">
     <transition name="fade-transform" mode="out-in">
       <keep-alive :include="cachedViews">
-        <router-view :key="key" />    //在 router-view上加上一个唯一的key，来保证路由切换时都会重新渲染触发钩子了
+        <router-view :key="key" />    //TODO:在 router-view上加上一个唯一的key，来保证路由切换时都会重新渲染触发钩子了
       </keep-alive>
     </transition>
   </section>

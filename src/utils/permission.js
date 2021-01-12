@@ -10,7 +10,7 @@ export default function checkPermission(value) {
     const roles = store.getters && store.getters.roles
     const permissionRoles = value
 
-    const hasPermission = roles.some(role => {
+    const hasPermission = roles.some(role => {   // 只要value里有一个role在vuex的roles里存在就有权限访问
       return permissionRoles.includes(role)
     })
     return hasPermission
